@@ -1,0 +1,24 @@
+<p>Leaf {{leaf.id}}</p>
+
+{{#sortable-objects
+  sortableObjectList=leaf.children
+  sortEndAction='sortEndAction'
+  class='leaf-children'
+  sortingScope=sortingScope
+}}
+
+  {{#each leaf.children as |child|}}
+    {{#draggable-object
+      content=child
+      class='leaf-wrapper draggable-object'
+      sortingScope=sortingScope
+      isSortable=true
+    }}
+      {{leaf-item
+        leaf=child
+        sortingScope=sortingScope
+      }}
+    {{/draggable-object}}
+  {{/each}}
+
+{{/sortable-objects}}
